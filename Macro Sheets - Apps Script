@@ -1,0 +1,88 @@
+function Preenchimento() {
+
+// Selecionando celula A2 da planilha Fonte para copiar os dados
+  var ss = SpreadsheetApp.getActive();
+  ss.setActiveSheet(ss.getSheetByName('Fonte'), true);
+  ss.getRange('A2').activate();
+
+// Copiando dados da tabela Fonte para colar nos Destiladores (1, 2, 3, 4)
+  var currentCell = ss.getCurrentCell();
+  ss.getActiveRange().getDataRegion(SpreadsheetApp.Dimension.COLUMNS).activate();
+  currentCell.activateAsCurrentCell();
+  currentCell = ss.getCurrentCell();
+  ss.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+  currentCell.activateAsCurrentCell();
+
+// Colando dados da tabela Fonte no Destilador 1
+  ss.setActiveSheet(ss.getSheetByName('Destilador1'), true);
+  ss.getRange('A1').activate();
+  ss.getCurrentCell().getNextDataCell(SpreadsheetApp.Direction.DOWN).activate();
+  ss.getCurrentCell().offset(1, 0).activate();
+  ss.getRange('Fonte!A2:O50').copyTo(ss.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
+
+// Colando dados da tabela Fonte no Destilador 2
+  ss.setActiveSheet(ss.getSheetByName('Destilador2'), true);
+  ss.getRange('A1').activate();
+  ss.getCurrentCell().getNextDataCell(SpreadsheetApp.Direction.DOWN).activate();
+  ss.getCurrentCell().offset(1, 0).activate();
+  ss.getRange('Fonte!A2:O50').copyTo(ss.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
+
+// Colando dados da tabela Fonte no Destilador 3
+  ss.setActiveSheet(ss.getSheetByName('Destilador3'), true);
+  ss.getRange('A1').activate();
+  ss.getCurrentCell().getNextDataCell(SpreadsheetApp.Direction.DOWN).activate();
+  ss.getCurrentCell().offset(1, 0).activate();
+  ss.getRange('Fonte!A2:O50').copyTo(ss.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
+
+// Colando dados da tabela Fonte no Destilador 4
+  ss.setActiveSheet(ss.getSheetByName('Destilador4'), true);
+  ss.getRange('A1').activate();
+  ss.getCurrentCell().getNextDataCell(SpreadsheetApp.Direction.DOWN).activate();
+  ss.getCurrentCell().offset(1, 0).activate();
+  ss.getRange('Fonte!A2:O50').copyTo(ss.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
+
+// Copiando os valores de tempo da Coluna "O" e colando em "C" e preenchendo a soma de tempo do Destilador4  
+  ss.getCurrentCell().offset(-1, 14).activate();
+  ss.getActiveRange().autoFillToNeighbor(SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
+  ss.getCurrentCell().offset(1, 0).activate();
+  currentCell = ss.getCurrentCell();
+  ss.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+  currentCell.activateAsCurrentCell();
+  ss.getCurrentCell().offset(0, -12).activate();
+  ss.getCurrentCell().offset(0, 12, 10, 1).copyTo(ss.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+  ss.getCurrentCell().offset(-1, 1).activate();
+  ss.getActiveRange().autoFillToNeighbor(SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
+
+// Copiando os valores de tempo da Coluna "O" e colando em "C" e preenchendo a soma de tempo do Destilador3
+  ss.setActiveSheet(ss.getSheetByName('Destilador3'), true);
+  ss.getCurrentCell().offset(-1, 14).activate();
+  ss.getActiveRange().autoFillToNeighbor(SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
+  ss.getCurrentCell().offset(1, 0).activate();
+  currentCell = ss.getCurrentCell();
+  ss.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+  currentCell.activateAsCurrentCell();
+  ss.getCurrentCell().offset(0, -12).activate();
+  ss.getCurrentCell().offset(0, 12, 10, 1).copyTo(ss.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+  ss.getCurrentCell().offset(-1, 1).activate();
+  ss.getActiveRange().autoFillToNeighbor(SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
+
+// Copiando os valores de tempo da Coluna "O" e colando em "C" e preenchendo a soma de tempo do Destilador2
+  ss.setActiveSheet(ss.getSheetByName('Destilador2'), true);
+  ss.getCurrentCell().offset(-1, 14).activate();
+  ss.getActiveRange().autoFillToNeighbor(SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
+  ss.getCurrentCell().offset(1, 0).activate();
+  currentCell = ss.getCurrentCell();
+  ss.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+  currentCell.activateAsCurrentCell();
+  ss.getCurrentCell().offset(0, -12).activate();
+  ss.getCurrentCell().offset(0, 12, 10, 1).copyTo(ss.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_VALUES, false);
+  ss.getCurrentCell().offset(-1, 1).activate();
+  ss.getActiveRange().autoFillToNeighbor(SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
+
+// Preenchendo os campos de soma de tempo do Destilador1
+  ss.setActiveSheet(ss.getSheetByName('Destilador1'), true);
+  ss.getCurrentCell().offset(-1, 3).activate();
+  ss.getActiveRange().autoFillToNeighbor(SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES);
+
+// Fim da macro
+};
